@@ -41,15 +41,10 @@ function main() {
 
 
     //drawing
-    const cube = makeInstance(new BoxGeometry(8, 2, 0.95), 0xff0000, 0, 0.25, -0.07);
+    const cube = makeInstance(new BoxGeometry(4, 2, 0.95), 0xff0000, 0, 0.25, -0.07);
 
     const loader = new GLTFLoader();
-    /**loader.load('./models/words.glb', (gltf)=>{
-        scene.add(gltf.scene);
-        requestRenderIfNotRequested();
-    }, undefined, (error)=>{
-        console.log(error);
-    }); */
+    
 
     {
         const color = 0xFFFFFF;
@@ -118,6 +113,10 @@ function main() {
         cube.position.z = z;
         return cube;
     }
+    controls.addEventListener('change', requestRenderIfNotRequested);
+    window.addEventListener('resize', requestRenderIfNotRequested);
+    window.addEventListener( 'pointermove', onPointerMove );
+    
 
 }
 
